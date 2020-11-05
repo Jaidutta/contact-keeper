@@ -6,7 +6,7 @@ const app = express();
 // Connect database
 connectDB()
 
-// Init Middleware
+// Init Middleware (to read the body)
 app.use(express.json({ extended: false}))
 
 app.get('/', (req, res) => {

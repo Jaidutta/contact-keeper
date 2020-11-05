@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
@@ -35,7 +35,7 @@ router.post(
 
 			if (user) {
         return res.status(400).json({ msg: 'User already exists' });
-      // 400 bad request: user did not fulfil the requirement for the request
+      // 400 bad request: user did not fil the field(anything missing or not right) for the request
 
 			}
 
@@ -57,6 +57,7 @@ router.post(
 				}
 			};
 
+			// generates a token
 			jwt.sign(
 				payload,
 				config.get('jwtSecret'),
